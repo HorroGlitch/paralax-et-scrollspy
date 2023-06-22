@@ -5,11 +5,56 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- link css here only when ccs is not imported in js yet -->
-    <!-- <link rel="stylesheet" href="/css/style.css"> -->
+    <link rel="stylesheet" href="/css/style.css">
     <title>Hello</title>
   </head>
+  <header>
+    <a class="active" href="#home">home</a>
+    <a href="#about">about</a>
+    <a href="#services">services</a>
+    <a href="#gallery">gallery</a>
+    <a href="#blogs">blogs</a>
+    <a href="#contacts">contacs</a>
+  </header>
   <body>
-    <h1>Hello World!</h1>
+    <section id="home"> home </section>
+    <section id="about"> about </section>
+    <section id="services"> services </section>
+    <section id="gallery"> gallery </section>
+    <section id="blogs"> blogs </section>
+    <section id="contacts"> contacts </section>
+
+    <script>
+
+      let section= document.querySelectorAll('section');
+      let navLinks = document.querySelectorAll('header nav a')
+
+      window.onscroll = () =>{
+
+        section.forEach(sec =>{
+
+          let top = window.scrollY;
+          let offset = sec.offsetTop;
+          let height = sec.offsetHeight;
+          let id = sec.getAttribute('id')
+
+          if (top >= offset && top < offset + height) {
+            navLinks.forEach(links =>{
+                links.classList.remove('active');
+                document.querySelector('header nav a[href*=' + id + ']').classList.add
+                ('active');
+                
+            } );
+          };
+
+        });
+
+      };
+
+    </script>
+
+    <div class="parallax"></div>
+    <div id="scrollspy">square</div>
     <!-- <script src="./js/app.js" type="module"></script> -->
   </body>
 </html>
